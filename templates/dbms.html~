@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- saved from url=(0014)about:internet -->
+  <title>Rquery</title>
+
+  <!-- Patch to make semantic elements work in IE8 and below. -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif -->
+<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="{{STATIC_URL }}google.css" type="text/css" media="screen"> 
+
+
+
+<style>
+
+
+#top{
+background-color:#2E1417;
+margin-top:0;
+margin-left:0;
+margin-right:0;
+height:35px;
+padding-top:5px;
+font-size:xx;
+padding-left:10px;
+}
+
+a{ 
+color:#c0c0c0 ; text-decoration: none}
+
+body {
+background:#ffffff url('http://wallpapersus.com/wallpapers/2012/09/Hitman-Barcode-Hitman-Absolution-Agent-47-Hitman-Blood-Money-768x1366.jpg') no-repeat center top;
+background-size:cover;
+margin-top:0;
+margin-left:0;
+margin-right:0;
+}
+
+h1{
+color:#666666;
+font-family: 'Dancing Script', Georgia, Times, serif;
+text-align:center;
+font-size:70px;
+}
+
+
+#top span{
+padding:3px 25px 2px 15px;
+color:#c0c0c0;
+font-weight:bold;
+font-size:20px;
+font-family: 'Dancing Script', Georgia, Times, serif;
+}
+
+#top span:hover{
+color:#ffffff;
+}
+
+
+
+
+
+
+</style>
+
+
+
+</head>
+<body>
+<div id="top">
+	<span><a href="http://127.0.0.1:8000">Home</a></span><span><a href="http://127.0.0.1:8000/search_form/">Search</a></span><span>About</span><span><a href="https://www.facebook.com/jdev005">Developer</a></span><span style=float:right><a href="http://127.0.0.1:8000/admin/">Login</a></span>
+</div>
+
+
+<h1>Rquery</h1>
+
+
+
+</body>
+
+
+</html>
+

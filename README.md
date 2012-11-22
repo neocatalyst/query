@@ -1,4 +1,6 @@
-query
+Query
 =====
 
-my DBMS project
+my DBMS project for 5th sem
+
+
