@@ -88,6 +88,34 @@ def rank(s):
 	students=(GPA.objects.filter(USN__Year_of_admission=year,Sem_no=sem,USN__Type_of_Admission='REG')|GPA.objects.filter(USN__Year_of_admission=year1,Sem_no=sem,USN__Type_of_Admission='DIP')).order_by('-CGPA')
 	return students	
 
+
+def clear(s):
+	year=s[3]
+	year1=str(int(year)+1)
+	sems=int(s[7])
+	sem1=2*sems
+	sem2=sem1-1
+	listta=Student.objects.filter(Year_of_admission=year,Type_of_Admission='REG')
+	listtb=Student.objects.filter(Year_of_admission=year1,Type_of_Admission='DIP')
+	listt= list(listta)+list(listtb)
+	listfta=(Subject_Grades.objects.filter(USN__Year_of_admission=year,Type='FT',USN__Type_of_Admission='REG',Sem_no=sem1)|Subject_Grades.objects.filter(USN__Year_of_admission=year,Type='FT',USN__Type_of_Admission='REG',Sem_no=sem2))
+	listftb=(Subject_Grades.objects.filter(USN__Year_of_admission=year1,Type='FT',USN__Type_of_Admission='DIP',Sem_no=sem1)|Subject_Grades.objects.filter(USN__Year_of_admission=year1,Type='FT',USN__Type_of_Admission='DIP',Sem_no=sem1))
+	listft=list(listfta)+list(listftb)
+	listt1=[]
+	listft1=[]
+	for i in listt:
+		listt1.append(i.USN)
+	for j in listft:
+		listft1.append(j.USN.USN)
+		
+	for x in listft1:
+		if x in listt1:
+			listt1.remove(x)
+	list2=Student.objects.filter(USN__in=listt1)
+	return list2
+	
+
+
 def home(request):  
 	return render_to_response('search.html')
 
@@ -120,10 +148,14 @@ def search(request):
 				students=sgpass(s)
 			elif 'no' in s and 'fasttrack' in s:
 				students=noft(s)
+				return render_to_response('search_results2.html',{'students':students,'query':q})
 			elif 'rank' in s:
 				students=rank(s)
 			elif 'fasttrack' in s:
 				students=fts(s)	
+			elif 'cleared' in s:
+				students=clear(s)
+				return render_to_response('search_results2.html',{'students':students,'query':q})
 			else:
 				error.append("Not able to undertand the command , Please see Help")
 				return render_to_response('search.html',{'error':error})
