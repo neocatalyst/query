@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+import re
 
 def validate_usn(value):
-		if value != r"1RV[0-9]{2}[A-Z]{2}[0-9]{3}":
+		if not re.match(r'1RV\d\d[A-Z][A-Z]\d\d\d',value):
 			raise ValidationError(u'invalid usn')
 			
 			
